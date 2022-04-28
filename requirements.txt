@@ -1,0 +1,7 @@
+Python==3.7
+PyTorch==1.4.0
+Cuda==10.1
+tensorboard
+tqdm
+h5py
+easydict
