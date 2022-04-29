@@ -26,7 +26,7 @@ conda deactivate
 
 1.Download Features
 
-We unify the data fomat of the four dataset used in our experiments, they can be downloaded from Baidu pan.
+We unify the data fomat of the four dataset used in our experiments, they can be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4).
 We recommend extract the data to the directory $/HOME/ms_sl/data. Take TVR dataset as example:
 ```
 cd ms-sl
