@@ -16,7 +16,7 @@ We used Anaconda to setup a deep learning workspace that supports PyTorch. Run t
 ```
 conda create --name ms_sl python=3.8
 conda activate ms_sl
-git clone https://github.com/cxkxk/ms-sl.git
+git clone https://github.com/HuiGuanLab/ms-sl.git
 cd ms-sl
 pip install -r requirements.txt
 conda deactivate
