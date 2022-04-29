@@ -1,6 +1,6 @@
 # ms-sl
-<img src="https://github.com/HuiGuanLab/ms-sl/tree/main/figures/pvr.png" width="600px">
-<img src="https://github.com/HuiGuanLab/ms-sl/tree/main/figures/ms-sl.png" width="600px">
+<img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/pvr.png" width="600px">
+<img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/ms-sl.png" width="600px">
 
 ## Environments 
 * **python 3.8**
