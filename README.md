@@ -1,5 +1,5 @@
 # ms-sl
-<img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/pvr_model.png" width="1000px">
+<img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/pvr_model.png" width="1100px">
 
 
 ## Environments 
