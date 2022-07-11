@@ -51,9 +51,6 @@ class MS_SL_Net(nn.Module):
         self.video_nce_criterion = frame_nce(reduction='mean')
 
 
-        self.ones_index, self.map_labels = self.get_ones_index(config.map_size)
-        self.ones_index = self.ones_index.to(config.device[0])
-
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -106,7 +103,7 @@ class MS_SL_Net(nn.Module):
         clip_trip_loss = self.get_clip_triplet_loss(clip_scale_scores, query_labels)
 
 
-        frame_nce_loss = 0.04 * self.video_nce_criterion(frame_scale_scores_)
+        frame_nce_loss = 0.03 * self.video_nce_criterion(frame_scale_scores_)
         frame_trip_loss = self.get_frame_trip_loss(frame_scale_scores)
 
         loss = clip_nce_loss + clip_trip_loss + frame_nce_loss + frame_trip_loss
@@ -114,23 +111,6 @@ class MS_SL_Net(nn.Module):
         return loss, {"loss_overall": float(loss), 'clip_nce_loss': clip_nce_loss,
                       'clip_trip_loss': clip_trip_loss,
                       'frame_nce_loss': frame_nce_loss, 'frame_trip_loss': frame_trip_loss}
-
-    @staticmethod
-    def get_ones_index(max_frame_num):
-
-        a = np.ones((max_frame_num, max_frame_num))
-        a = np.flip(np.triu(a), axis=1)
-        map_labels = []
-        ones = []
-        for i in range(max_frame_num):
-            for j in range(max_frame_num):
-                if a[i][j] == 1:
-                    ones.append(i * max_frame_num + j)
-                    map_labels.append([i, j])
-
-        ones_index = torch.from_numpy(np.array(ones))
-
-        return ones_index, map_labels
 
 
 
@@ -163,13 +143,13 @@ class MS_SL_Net(nn.Module):
 
     def encode_feat_map(self, x_feat):
 
-        batch_size, num_frames, feat_dim = x_feat.size()
         pool_in = x_feat.permute(0, 2, 1)
 
-        proposal_feat_map = torch.zeros((batch_size, num_frames, num_frames, feat_dim)).to(x_feat.device)
+        proposal_feat_map = []
         for idx, pool in enumerate(self.pool_layers):
             x = pool(pool_in).permute(0, 2, 1)
-            proposal_feat_map[:, idx, :x.shape[1], :] = x
+            proposal_feat_map.append(x)
+        proposal_feat_map = torch.cat(proposal_feat_map, dim=1)
 
 
         return proposal_feat_map
@@ -270,20 +250,19 @@ class MS_SL_Net(nn.Module):
     def key_clip_guided_attention_in_inference(self, frame_feat, proposal_feat, feat_mask, max_index):
         key = self.mapping_linear[0](frame_feat)
         value = self.mapping_linear[1](frame_feat)
-        attention_feat = torch.zeros(frame_feat.shape[0], max_index.shape[0], frame_feat.shape[-1])
-        for i in range(max_index.shape[0]):
-            index = max_index[i]
-            query_ = proposal_feat[[j for j in range(proposal_feat.shape[0])], index].unsqueeze(-1)
-            if feat_mask is not None:
-                scores = torch.bmm(key, query_).squeeze()
-                masked_scores = scores.masked_fill(feat_mask.eq(0), -1e9).unsqueeze(1)
-                masked_scores = nn.Softmax(dim=-1)(masked_scores)
-                attention_feat_ = torch.bmm(masked_scores, value).squeeze()
-                attention_feat[:, i, :] = attention_feat_
-            else:
-                score_ = nn.Softmax(dim=-1)(torch.bmm(key, query_).transpose(1, 2))
-                attention_feat_ = torch.bmm(score_, value).squeeze()
-                attention_feat[:, i, :] = attention_feat_
+        num_vid = frame_feat.shape[0]
+
+        index = torch.arange(num_vid).unsqueeze(1)
+        query = proposal_feat[index, max_index.t()]
+        if feat_mask is not None:
+            scores = torch.bmm(key, query.transpose(2, 1))
+            masked_scores = scores.masked_fill(feat_mask.unsqueeze(-1).eq(0), -1e9)
+            masked_scores = nn.Softmax(dim=1)(masked_scores)
+            attention_feat = torch.bmm(masked_scores.transpose(1, 2), value)
+        else:
+            scores = torch.bmm(key, query.transpose(2, 1))
+            scores = nn.Softmax(dim=1)(scores)
+            attention_feat = torch.bmm(scores.transpose(1, 2), value)
 
         return attention_feat
 

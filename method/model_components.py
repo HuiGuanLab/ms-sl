@@ -18,7 +18,6 @@ def onehot(indexes, N=None):
     return output
 
 
-
 class clip_nce(nn.Module):
     def __init__(self, reduction='mean'):
         super(clip_nce, self).__init__()
@@ -49,36 +48,21 @@ class clip_nce(nn.Module):
         else:
             return denominator - nominator
 
+
 class frame_nce(nn.Module):
     def __init__(self, reduction='mean'):
         super(frame_nce, self).__init__()
         self.reduction = reduction
 
-    def forward(self, q2ctx_scores=None, contexts=None, queries=None):
-        if q2ctx_scores is None:
-            assert contexts is not None and queries is not None
-            x = torch.matmul(contexts, queries.t())
-            device = contexts.device
-            bsz = contexts.shape[0]
-        else:
-            x = q2ctx_scores
-            device = q2ctx_scores.device
-            bsz = q2ctx_scores.shape[0]
+    def forward(self, q2ctx_scores=None):
+        query_bsz = q2ctx_scores.shape[0]
+        diagnoal = torch.arange(query_bsz).to(q2ctx_scores.device)
+        nominator = torch.logsumexp(q2ctx_scores[diagnoal, diagnoal].unsqueeze(1), dim=1)
 
-        x = x.view(bsz, bsz, -1)
-        nominator = x * torch.eye(x.shape[0], dtype=torch.float32, device=device)[:, :, None]
-        nominator = nominator.sum(dim=1)
+        t2v_denominator = torch.logsumexp(q2ctx_scores, dim=1)
+        v2t_denominator = torch.logsumexp(q2ctx_scores, dim=0)
 
-        nominator = torch.logsumexp(nominator, dim=1)
-
-        denominator = torch.cat((x, x.permute(1, 0, 2)), dim=1).view(x.shape[0], -1)
-        denominator = torch.logsumexp(denominator, dim=1)
-        if self.reduction:
-            return torch.mean(denominator - nominator)
-        else:
-            return denominator - nominator
-
-
+        return torch.mean(t2v_denominator - nominator) + torch.mean(v2t_denominator - nominator)
 
 class TrainablePositionalEncoding(nn.Module):
     """Construct the embeddings from word, position and token_type embeddings."""
