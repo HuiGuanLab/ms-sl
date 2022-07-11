@@ -133,9 +133,6 @@ class MS_SL_Net(nn.Module):
 
         vid_proposal_feat_map = self.encode_feat_map(encoded_clip_feat)
 
-        vid_proposal_feat_map = vid_proposal_feat_map.view(encoded_clip_feat.shape[0], -1,
-                                                           encoded_clip_feat.shape[-1])
-        vid_proposal_feat_map = vid_proposal_feat_map[:, self.ones_index, :]
 
         return encoded_frame_feat, \
                vid_proposal_feat_map
