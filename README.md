@@ -153,7 +153,7 @@ The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training
 ./do_test.sh activitynet i3d $ROOTPATH activitynet-runs_0-2022_07_11_20_27_02
 ```
 
-We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](). Run the following script to evaluate it.
+We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg). Run the following script to evaluate it.
 ```
 ROOTPATH=$HOME/VisualSearch
 cd ms-sl
@@ -195,7 +195,7 @@ The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training
 ./do_test.sh charades i3d_rgb_lgi $ROOTPATH charades-runs_0-2022_07_11_20_27_02
 ```
 
-We also provide the trained checkpoint on Charades-STA, it can be downloaded from [Here](). Run the following script to evaluate it.
+We also provide the trained checkpoint on Charades-STA, it can be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk). Run the following script to evaluate it.
 ```
 ROOTPATH=$HOME/VisualSearch
 cd ms-sl
