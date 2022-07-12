@@ -103,7 +103,7 @@ class MS_SL_Net(nn.Module):
         clip_trip_loss = self.get_clip_triplet_loss(clip_scale_scores, query_labels)
 
 
-        frame_nce_loss = 0.03 * self.video_nce_criterion(frame_scale_scores_)
+        frame_nce_loss = 0.04 * self.video_nce_criterion(frame_scale_scores_)
         frame_trip_loss = self.get_frame_trip_loss(frame_scale_scores)
 
         loss = clip_nce_loss + clip_trip_loss + frame_nce_loss + frame_trip_loss

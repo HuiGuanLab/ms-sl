@@ -229,11 +229,11 @@ def eval_epoch(model, val_video_dataset, val_text_dataset, opt):
 
     v2t_gt, t2v_gt = get_gt(video_metas, query_metas)
     print('clip_scale_scores:')
-    t2v_r1, t2v_r5, t2v_r10, t2v_r100, t2v_medr, t2v_meanr, t2v_map_score = cal_perf(-1 * query_context_scores, t2v_gt)
+    cal_perf(-1 * query_context_scores, t2v_gt)
     print('frame_scale_scores:')
     cal_perf(-1 * global_query_context_scores, t2v_gt)
     print('score_sum:')
-    cal_perf(-1 * score_sum, t2v_gt)
+    t2v_r1, t2v_r5, t2v_r10, t2v_r100, t2v_medr, t2v_meanr, t2v_map_score = cal_perf(-1 * score_sum, t2v_gt)
     currscore = 0
     currscore += (t2v_r1 + t2v_r5 + t2v_r10 + t2v_r100)
 
