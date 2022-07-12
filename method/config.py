@@ -115,7 +115,7 @@ class BaseOptions(object):
             opt.eval_query_bsz = 100
         if isinstance(self, TestOptions):
             # modify model_dir to absolute path
-            opt.model_dir = os.path.join("results", opt.model_dir)
+            opt.model_dir = os.path.join(opt.root_path, opt.collection,"results",opt.model_dir)
             saved_options = load_json(os.path.join(opt.model_dir, self.saved_option_filename))
             for arg in saved_options:  # use saved options to overwrite all BaseOptions args.
                 if arg not in ["results_root", "num_workers", "nms_thd", "debug",
@@ -126,7 +126,8 @@ class BaseOptions(object):
             if opt.exp_id is None:
                 raise ValueError("--exp_id is required for at a training option!")
             
-            opt.results_dir = os.path.join(opt.results_root, "-".join([opt.dset_name, opt.exp_id,
+            opt.results_dir = os.path.join(opt.root_path, opt.collection,
+                                           "results", "-".join([opt.dset_name, opt.exp_id,
                                                                        time.strftime("%Y_%m_%d_%H_%M_%S")]))
             mkdirp(opt.results_dir)
             # save a copy of current code
