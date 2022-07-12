@@ -19,10 +19,6 @@
   * [Model Training](#Training-2)
   * [Model Evaluation](#Evaluation-2)
   * [Expected Performance](#Expected-Performance-2)
-* [MS-SL on DiDemo](#MS-SL-on-DiDemo)
-  * [Model Training](#Training-3)
-  * [Model Evaluation](#Evaluation-3)
-  * [Expected Performance](#Expected-Performance-3)
 * [Reference](#Reference)
 
 ## Environments 
@@ -210,46 +206,5 @@ tar -xvf checkpoint_charades.tar -C results/
 | :---------: | :--: | :--: | :--: | :---: | :---: |
 | Text-to-Video | 1.8 | 7.1 | 11.8 | 47.7  | 68.4 |
 
-## MS-SL on DiDemo
-
-### Training
-Run the following script to train  `MS-SL` network on DiDemo.
-
-```
-#Add project root to PYTHONPATH (Note that you need to do this each time you start a new session.)
-source setup.sh
-
-conda activate ms-sl
-
-ROOTPATH=$HOME/VisualSearch
-#Template:
-./do_tvr.sh $RUN_ID $ROOTPATH $GPU_DEVICE_ID
-#Example:
-./do_tvr.sh didemo_runs_0 $ROOTPATH 0
-```
-
-### Evaluation
-The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training. To evaluate it, please run the following script:
-```
-#Template:
-./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
-#Example:
-./do_test.sh didemo rgb_flow $ROOTPATH didemo-runs_0-2022_07_11_20_27_02
-```
-
-We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](). Run the following script to evaluate it.
-```
-ROOTPATH=$HOME/VisualSearch
-cd ms-sl
-tar -xvf checkpoint_didemo.tar -C results/
-
-./do_test.sh didemo rgb_flow $ROOTPATH checkpoint_didemo
-```
-
-### Expected performance 
-
-|             | R@1  | R@5  | R@10 | R@100 | SumR  |
-| :---------: | :--: | :--: | :--: | :---: | :---: |
-| Text-to-Video | 6.6 | 19.3 | 27.7 | 72.4  | 125.9 |
 
 
