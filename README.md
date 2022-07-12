@@ -43,30 +43,6 @@ pip install -r requirements.txt
 conda deactivate
 ```
 
-## Required Data
-We use four public datasets: TVR, Activitynet, Charades-STA and DiDemo. The extracted feature is placed  in `$HOME/VisualSearch/`.
-
-
-
-```
-# download the data of TVR
-ROOTPATH=$HOME/VisualSearch
-mkdir -p $ROOTPATH && cd $ROOTPATH
-tar -xvf tvr.tar
-
-# download the data of Activitynet
-ROOTPATH=$HOME/VisualSearch
-mkdir -p $ROOTPATH && cd $ROOTPATH
-tar -xvf activitynet.tar
-
-# download the data of Charades-STA
-ROOTPATH=$HOME/VisualSearch
-mkdir -p $ROOTPATH && cd $ROOTPATH
-tar -xvf charades.tar
-
-```
-
-
 ## MS-SL on TVR
 
 ### Required Data
