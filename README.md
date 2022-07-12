@@ -95,7 +95,7 @@ ROOTPATH=$HOME/VisualSearch
 #Template:
 ./do_tvr.sh $RUN_ID $ROOTPATH $GPU_DEVICE_ID
 #Example:
-./do_tvr.sh tvr_runs_0 $ROOTPATH 0
+./do_tvr.sh runs_0 $ROOTPATH 0
 ```
 `$RUN_ID` is the name of the folder where the model is saved in.
 
@@ -104,9 +104,9 @@ ROOTPATH=$HOME/VisualSearch
 The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training. To evaluate it, please run the following script:
 ```
 #Template:
-./do_test.sh $DATASET $FEATURE $ROOTPATH $RUN_ID
+./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 #Example:
-./do_test.sh tvr i3d_resnet $ROOTPATH tvr_runs_0
+./do_test.sh tvr i3d_resnet $ROOTPATH tvr-runs_0-2022_07_11_20_27_02
 ```
 
 We also provide the trained checkpoint on TVR, it can be downloaded from [Here](). Run the following script to evaluate it.
@@ -120,7 +120,7 @@ tar -xvf checkpoint_tvr.tar -C results/
 `$DATASET` is the dataset that the trained model evaluate on.
 
 `$FEATURE` is the video feature corresponding to the dataset.
-
+`$MODELDIR` is the path of checkpoints saved.
 ### Expected performance 
 
 |             | R@1  | R@5  | R@10 | R@100 | SumR  |
@@ -141,16 +141,16 @@ ROOTPATH=$HOME/VisualSearch
 #Template:
 ./do_tvr.sh $RUN_ID $ROOTPATH $GPU_DEVICE_ID
 #Example:
-./do_tvr.sh tvr_runs_0 $ROOTPATH 0
+./do_tvr.sh runs_0 $ROOTPATH 0
 ```
 
 ### Evaluation
 The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training. To evaluate it, please run the following script:
 ```
 #Template:
-./do_test.sh $DATASET $FEATURE $ROOTPATH $RUN_ID
+./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 #Example:
-./do_test.sh activitynet i3d $ROOTPATH activitynet_runs_0
+./do_test.sh activitynet i3d $ROOTPATH activitynet-runs_0-2022_07_11_20_27_02
 ```
 
 We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](). Run the following script to evaluate it.
@@ -183,16 +183,16 @@ ROOTPATH=$HOME/VisualSearch
 #Template:
 ./do_tvr.sh $RUN_ID $ROOTPATH $GPU_DEVICE_ID
 #Example:
-./do_tvr.sh charades_runs_0 $ROOTPATH 0
+./do_tvr.sh runs_0 $ROOTPATH 0
 ```
 
 ### Evaluation
 The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training. To evaluate it, please run the following script:
 ```
 #Template:
-./do_test.sh $DATASET $FEATURE $ROOTPATH $RUN_ID
+./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 #Example:
-./do_test.sh charades i3d_rgb_lgi $ROOTPATH charades_runs_0
+./do_test.sh charades i3d_rgb_lgi $ROOTPATH charades-runs_0-2022_07_11_20_27_02
 ```
 
 We also provide the trained checkpoint on Charades-STA, it can be downloaded from [Here](). Run the following script to evaluate it.
@@ -232,9 +232,9 @@ ROOTPATH=$HOME/VisualSearch
 The model is placed in the directory $/HOME/ms-sl/results/$RUN_ID after training. To evaluate it, please run the following script:
 ```
 #Template:
-./do_test.sh $DATASET $FEATURE $ROOTPATH $RUN_ID
+./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 #Example:
-./do_test.sh didemo rgb_flow $ROOTPATH didemo_runs_0
+./do_test.sh didemo rgb_flow $ROOTPATH didemo-runs_0-2022_07_11_20_27_02
 ```
 
 We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](). Run the following script to evaluate it.
