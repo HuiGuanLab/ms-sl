@@ -51,15 +51,6 @@ def get_gt(video_metas, query_metas):
     return v2t_gt, t2v_gt
 
 def eval_q2m(scores, q2m_gts):
-    '''
-    Image -> Text / Text -> Image
-    Args:
-      scores: (n_query, n_memory) matrix of similarity scores
-      q2m_gts: list, each item is the positive memory ids of the query id
-    Returns:
-      scores: (recall@1, 5, 10, median rank, mean rank)
-      gt_ranks: the best ranking of ground-truth memories
-    '''
     n_q, n_m = scores.shape
 
     gt_ranks = np.zeros((n_q,), np.int32)
@@ -83,16 +74,10 @@ def eval_q2m(scores, q2m_gts):
     r100 = 100.0 * len(np.where(gt_ranks <= 100)[0]) / n_q
     medr = np.median(gt_ranks)
     meanr = gt_ranks.mean()
-    # mAP = aps.mean()
 
     return (r1, r5, r10, r100, medr, meanr)
 
-# mAP for Text-to-Video Retrieval
 def t2v_map(c2i, t2v_gts):
-    """
-    Text->Videos (Text-to-Video Retrieval)
-    c2i: (5N, N) matrix of caption to video errors
-    """
     perf_list = []
     for i in range(c2i.shape[0]):
         d_i = c2i[i, :]
@@ -109,10 +94,6 @@ def t2v_map(c2i, t2v_gts):
 
 
 def compute_context_info(model, eval_dataset, opt):
-    """Use val set to do evaluation, remember to run with torch.no_grad().
-    estimated 2200 (videos) * 100 (frm) * 500 (hsz) * 4 (B) * 2 (video/sub) * 2 (layers) / (1024 ** 2) = 1.76 GB
-    max_n_videos: only consider max_n_videos videos for each query to return st_ed scores.
-    """
     model.eval()
     n_total_vid = len(eval_dataset)
     context_dataloader = DataLoader(eval_dataset, collate_fn=collate_frame_val, batch_size=opt.eval_context_bsz,
@@ -159,7 +140,7 @@ def compute_context_info(model, eval_dataset, opt):
     return dict(
         video_metas=metas,  # list(dict) (N_videos)
         video_proposal_feat=vid_proposal_feat,
-        video_feat=cat_tensor(frame_feat),  # (N_videos, L, hsz),
+        video_feat=cat_tensor(frame_feat),
         video_mask=cat_tensor(frame_mask)
         )
 
@@ -170,10 +151,7 @@ def compute_query2ctx_info(model, eval_dataset, opt, ctx_info):
     query_eval_loader = DataLoader(eval_dataset, collate_fn=collate_text_val, batch_size=opt.eval_query_bsz,
                                    num_workers=opt.num_workers, shuffle=False, pin_memory=opt.pin_memory)
 
-    n_total_query = len(eval_dataset)
-    bsz = opt.eval_query_bsz
     query_metas = []
-    # query_context_scores = None
     clip_scale_scores = []
     frame_scale_scores = []
     score_sum = []
@@ -216,7 +194,6 @@ def cal_perf(t2v_all_errors, t2v_gt):
 
 
 def eval_epoch(model, val_video_dataset, val_text_dataset, opt):
-    """max_after_nms: always set to 100, since the eval script only evaluate top-100"""
     model.eval()
     logger.info("Computing scores")
 
@@ -259,9 +236,10 @@ def setup_model(opt):
             model = torch.nn.DataParallel(model, device_ids=opt.device_ids)  # use multi GPU
     return model
 
-def start_inference():
+def start_inference(opt=None):
     logger.info("Setup config, data and model...")
-    opt = TestOptions().parse()
+    if opt is None:
+        opt = TestOptions().parse()
     cudnn.benchmark = False
     cudnn.deterministic = True
 

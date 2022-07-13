@@ -67,28 +67,6 @@ class BigFile:
     def shape(self):
         return [self.nr_of_images, self.ndims]
 
-class Vocabulary(object):
-    """Simple vocabulary wrapper."""
-
-    def __init__(self, text_style):
-        self.word2idx = {}
-        self.idx2word = {}
-        self.idx = 0
-        self.text_style = text_style
-
-    def add_word(self, word):
-        if word not in self.word2idx:
-            self.word2idx[word] = self.idx
-            self.idx2word[self.idx] = word
-            self.idx += 1
-
-    def __call__(self, word):
-        if word not in self.word2idx and 'bow' not in self.text_style:
-            return self.word2idx['<unk>']
-        return self.word2idx[word]
-
-    def __len__(self):
-        return len(self.word2idx)
 
 def log_config(log_dir, ca='logging'):
     logger = logging.getLogger()
@@ -99,21 +77,6 @@ def log_config(log_dir, ca='logging'):
     handler.setFormatter(formatter)
     # logger.addHandler(logging.StreamHandler())
     logger.addHandler(handler)
-
-def get_we_parameter(vocab, w2v_file):
-    w2v_reader = BigFile(w2v_file)
-    ndims = w2v_reader.ndims
-
-    we = []
-    # we.append([0]*ndims)
-    for i in range(len(vocab)):
-        try:
-            vec = w2v_reader.read_one(vocab.idx2word[i])
-        except:
-            vec = np.random.uniform(-1, 1, ndims)
-        we.append(vec)
-    print('getting pre-trained parameter for word embedding initialization', np.shape(we))
-    return np.array(we)
 
 
 def uniform_feature_sampling(features, max_len):

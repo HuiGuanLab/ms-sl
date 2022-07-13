@@ -183,15 +183,6 @@ class MS_SL_Net(nn.Module):
 
     @staticmethod
     def get_clip_scale_scores(modularied_query, context_feat):
-        """ Calculate video2query scores for each pair of video and query inside the batch.
-        Args:
-            modularied_query: (N, D)
-            context_feat: (N, L, D), output of the first transformer encoder layer
-            context_mask: (N, L)
-        Returns:
-            context_query_scores: (N, N)  score of each query w.r.t. each video inside the batch,
-                diagonal positions are positive. used to get negative samples.
-        """
         modularied_query = F.normalize(modularied_query, dim=-1)
         context_feat = F.normalize(context_feat, dim=-1)
 
@@ -205,15 +196,6 @@ class MS_SL_Net(nn.Module):
 
     @staticmethod
     def get_unnormalized_clip_scale_scores(modularied_query, context_feat):
-        """ Calculate video2query scores for each pair of video and query inside the batch.
-        Args:
-            modularied_query: (N, D)
-            context_feat: (N, L, D), output of the first transformer encoder layer
-            context_mask: (N, L)
-        Returns:
-            context_query_scores: (N, N)  score of each query w.r.t. each video inside the batch,
-                diagonal positions are positive. used to get negative samples.
-        """
 
         query_context_scores = torch.matmul(context_feat, modularied_query.t()).permute(2, 1, 0)
 
@@ -269,7 +251,7 @@ class MS_SL_Net(nn.Module):
                                 video_proposal_feat=None,
                                 video_feat=None,
                                 video_feat_mask=None,
-                                cross=False, return_query_feats=False):
+                                return_query_feats=False):
 
 
         video_query = self.encode_query(query_feat, query_mask)
@@ -306,19 +288,16 @@ class MS_SL_Net(nn.Module):
         v2t_loss = 0
         for i in range(v2t_scores.shape[0]):
             pos_pair_scores = torch.mean(v2t_scores[i][np.where(labels == i)])
-            # pos_pair_scores = v2t_scores[i][np.where(labels == i)]
-            # neg_pair_scores = torch.max(v2t_scores[i][np.where(labels!=i)[0]])
+
 
             neg_pair_scores, _ = torch.sort(v2t_scores[i][np.where(labels != i)[0]], descending=True)
             if self.config.use_hard_negative:
-                # sample_neg_pair_scores = torch.mean(neg_pair_scores[:5])
                 sample_neg_pair_scores = neg_pair_scores[0]
             else:
                 v2t_sample_max_idx = neg_pair_scores.shape[0]
                 sample_neg_pair_scores = neg_pair_scores[
                     torch.randint(0, v2t_sample_max_idx, size=(1,)).to(v2t_scores.device)]
-                # sample_neg_pair_scores = neg_pair_scores[
-                #     torch.randint(0, 1, size=(1,)).to(v2t_scores.device)]
+
 
 
             v2t_loss += (self.config.margin + sample_neg_pair_scores - pos_pair_scores).clamp(min=0).sum()
@@ -333,8 +312,7 @@ class MS_SL_Net(nn.Module):
                                  t2v_scores.shape[1]) if self.config.use_hard_negative else t2v_scores.shape[1]
         sample_indices = sorted_scores_indices[
             text_indices, torch.randint(1, t2v_sample_max_idx, size=(t2v_scores.shape[0],)).to(t2v_scores.device)]
-        # sample_indices = sorted_scores_indices[
-        #     text_indices, torch.randint(1, 2, size=(t2v_scores.shape[0],)).to(t2v_scores.device)]
+
         t2v_neg_scores = t2v_scores[text_indices, sample_indices]
 
         t2v_loss = (self.config.margin + t2v_neg_scores - t2v_pos_scores).clamp(min=0)

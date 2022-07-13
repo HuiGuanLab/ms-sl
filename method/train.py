@@ -17,7 +17,6 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from method.config import BaseOptions
 from method.model import MS_SL_Net
-# from method_tvr.start_end_dataset import StartEndDataset, start_end_collate, StartEndEvalDataset, prepare_batch_inputs
 from method.data_provider import Dataset4MS_SL,VisDataSet4MS_SL,\
     TxtDataSet4MS_SL,collate_train,read_video_ids
 
@@ -233,7 +232,7 @@ def start_training(opt):
     
     model_config = EDict(
         visual_input_size=opt.visual_feat_dim,
-        query_input_size=opt.q_feat_size,  # for both desc and subtitles
+        query_input_size=opt.q_feat_size,
         hidden_size=opt.hidden_size,  # hidden dimension
         max_ctx_l=opt.max_ctx_l,
         max_desc_l=opt.max_desc_l,
@@ -266,10 +265,7 @@ if __name__ == '__main__':
     if not debug:
         model_dir = model_dir.split(os.sep)[-1]
 
-        input_args = ["--model_dir", model_dir, "--eval_split_name", eval_split_name,
-                      "--eval_path", eval_path]
-        sys.argv[1:] = input_args
         logger.info("\n\n\nFINISHED TRAINING!!!")
         logger.info("Evaluating model in {}".format(model_dir))
         logger.info("Input args {}".format(sys.argv[1:]))
-        start_inference()
+        start_inference(opt)

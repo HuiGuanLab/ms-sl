@@ -118,10 +118,11 @@ class BaseOptions(object):
             opt.model_dir = os.path.join(opt.root_path, opt.collection,"results",opt.model_dir)
             saved_options = load_json(os.path.join(opt.model_dir, self.saved_option_filename))
             for arg in saved_options:  # use saved options to overwrite all BaseOptions args.
-                if arg not in ["results_root", "num_workers", "nms_thd", "debug",
-                               "eval_split_name", "eval_path", "eval_query_bsz", "eval_context_bsz",
-                               "max_pred_l", "min_pred_l", "external_inference_vr_res_path"]:
-                    setattr(opt, arg, saved_options[arg])
+                setattr(opt, arg, saved_options[arg])
+            opt.ckpt_filepath = os.path.join(opt.model_dir, self.ckpt_filename)
+            opt.train_log_filepath = os.path.join(opt.model_dir, self.train_log_filename)
+            opt.eval_log_filepath = os.path.join(opt.model_dir, self.eval_log_filename)
+            opt.tensorboard_log_dir = os.path.join(opt.model_dir, self.tensorboard_log_dir)
         else:
             if opt.exp_id is None:
                 raise ValueError("--exp_id is required for at a training option!")
@@ -136,16 +137,13 @@ class BaseOptions(object):
             make_zipfile(code_dir, code_zip_filename, enclosing_dir="code", exclude_dirs_substring="results",
                          exclude_dirs=["results", "debug_results", "__pycache__"],
                          exclude_extensions=[".pyc", ".ipynb", ".swap"],)
+            opt.ckpt_filepath = os.path.join(opt.results_dir, self.ckpt_filename)
+            opt.train_log_filepath = os.path.join(opt.results_dir, self.train_log_filename)
+            opt.eval_log_filepath = os.path.join(opt.results_dir, self.eval_log_filename)
+            opt.tensorboard_log_dir = os.path.join(opt.results_dir, self.tensorboard_log_dir)
         self.display_save(opt)
 
-        if opt.hard_negative_start_epoch != -1:
-            if opt.hard_pool_size > opt.bsz:
-                print("[WARNING] hard_pool_size is larger than bsz")
 
-        opt.ckpt_filepath = os.path.join(opt.results_dir, self.ckpt_filename)
-        opt.train_log_filepath = os.path.join(opt.results_dir, self.train_log_filename)
-        opt.eval_log_filepath = os.path.join(opt.results_dir, self.eval_log_filename)
-        opt.tensorboard_log_dir = os.path.join(opt.results_dir, self.tensorboard_log_dir)
         opt.device = torch.device("cuda:%d" % opt.device_ids[0] if opt.device >= 0 else "cpu")
         opt.h5driver = None if opt.no_core_driver else "core"
         # num_workers > 1 will only work with "core" mode, i.e., memory-mapped hdf5
@@ -160,7 +158,6 @@ class TestOptions(BaseOptions):
     """add additional options for evaluating"""
     def initialize(self):
         BaseOptions.initialize(self)
-        # also need to specify --eval_split_name
         self.parser.add_argument("--eval_id", type=str, help="evaluation id")
         self.parser.add_argument("--model_dir", type=str,
                                  help="dir contains the model file, will be converted to absolute path afterwards")
