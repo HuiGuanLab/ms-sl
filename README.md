@@ -81,20 +81,16 @@ ROOTPATH=$HOME/VisualSearch
 MODELDIR=tvr-runs_0-2022_07_11_20_27_02
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
-
 ```
 
-We also provide the trained checkpoint on TVR, it can be downloaded from [Here](). Run the following script to evaluate it.
+We also provide the trained checkpoint on TVR, it can be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk). Run the following script to evaluate it.
 ```
 ROOTPATH=$HOME/VisualSearch
-cd ms-sl
-tar -xvf checkpoint_tvr.tar -C $ROOTPATH/tvr
-
 DATASET=tvr
-FEATURE=i3d_resnet
-ROOTPATH=$HOME/VisualSearch
-MODELDIR=checkpoint_tvr
+tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
+FEATURE=i3d_resnet
+MODELDIR=checkpoint_tvr
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 `$DATASET` is the dataset that the model trained and evaluate on.
@@ -147,14 +143,11 @@ MODELDIR=activitynet-runs_0-2022_07_11_20_27_02
 We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg). Run the following script to evaluate it.
 ```
 ROOTPATH=$HOME/VisualSearch
-cd ms-sl
-tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/results
-
 DATASET=activitynet
-FEATURE=i3d
-ROOTPATH=$HOME/VisualSearch
-MODELDIR=checkpoint_activitynet
+tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 
+FEATURE=i3d
+MODELDIR=checkpoint_activitynet
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
@@ -205,14 +198,11 @@ MODELDIR=charades-runs_0-2022_07_11_20_27_02
 We also provide the trained checkpoint on Charades-STA, it can be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk). Run the following script to evaluate it.
 ```
 ROOTPATH=$HOME/VisualSearch
-cd ms-sl
-tar -xvf checkpoint_charades.tar -C $ROOTPATH/results
-
 DATASET=charades
-FEATURE=i3d_rgb_lgi
-ROOTPATH=$HOME/VisualSearch
-MODELDIR=checkpoint_charades
+tar -xvf checkpoint_charades.tar -C $ROOTPATH/$DATASET/results
 
+FEATURE=i3d_rgb_lgi
+MODELDIR=checkpoint_charades
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
