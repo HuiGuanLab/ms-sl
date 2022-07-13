@@ -102,7 +102,7 @@ MODELDIR=checkpoint_tvr
 
 |             | R@1  | R@5  | R@10 | R@100 | SumR  |
 | :---------: | :--: | :--: | :--: | :---: | :---: |
-| Text-to-Video | 13.8 | 32.8 | 43.7 | 83.2  | 173.5 |
+| Text-to-Video | 13.5 | 32.1 | 43.4 | 83.4  | 172.3 |
 
 ## MS-SL on Activitynet
 ### Required Data
