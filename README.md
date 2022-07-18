@@ -23,6 +23,7 @@ Source code of our ACM MM'2022 paper [Partially Relevant Video Retrieval](#).
   * [Model Evaluation](#Evaluation-2)
   * [Expected Performance](#Expected-Performance-2)
 * [Reference](#Reference)
+* [Acknowledgement](#Acknowledgement)
 
 ## Environments 
 * **python 3.8**
@@ -224,3 +225,5 @@ booktitle = {Proceedings of the 30th ACM International Conference on Multimedia}
 year = {2022},
 }
 ```
+## Acknowledgement
+The codes are modified from [TVRetrieval](https://github.com/jayleicn/TVRetrieval)
