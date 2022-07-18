@@ -226,4 +226,4 @@ year = {2022},
 }
 ```
 ## Acknowledgement
-The codes are modified from [TVRetrieval](https://github.com/jayleicn/TVRetrieval)
+The codes are modified from [TVRetrieval.](https://github.com/jayleicn/TVRetrieval)
