@@ -168,7 +168,7 @@ MODELDIR=checkpoint_activitynet
 ## MS-SL on Charades-STA
 
 ### Required Data
-The video feature and text feature of the Charades-STA dataset can be downloaded [Here](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Run the following script to place the data in the specified path. 
+Run the following script to download the video feature and text feature of the Charades-STA dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4).  
 
 ```
 ROOTPATH=$HOME/VisualSearch
@@ -203,7 +203,7 @@ MODELDIR=charades-runs_0-2022_07_11_20_27_02
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
-We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk).
+We also provide the trained checkpoint on Charades-STA, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk).
 ```
 ROOTPATH=$HOME/VisualSearch
 DATASET=charades
