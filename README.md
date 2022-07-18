@@ -48,12 +48,13 @@ conda deactivate
 ## MS-SL on TVR
 
 ### Required Data
-The video feature and text feature of the TVR dataset can be downloaded [Here](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Run the following script to place the data in the specified path. 
+Run the following script to download the video feature and text feature of the TVR dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). 
 
 ```
 # download the data of TVR
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
+wget http://8.210.46.84:8787/prvr/data/tvr.tar
 tar -xvf tvr.tar
 ```
 
@@ -87,10 +88,11 @@ MODELDIR=tvr-runs_0-2022_07_11_20_27_02
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
-We also provide the trained checkpoint on TVR, it can be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk). Run the following script to evaluate it.
+We also provide the trained checkpoint on TVR, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk). 
 ```
 ROOTPATH=$HOME/VisualSearch
 DATASET=tvr
+wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_tvr.tar
 tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
 FEATURE=i3d_resnet
@@ -110,11 +112,12 @@ MODELDIR=checkpoint_tvr
 
 ## MS-SL on Activitynet
 ### Required Data
-The video feature and text feature of the Activitynet dataset can be downloaded [Here](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Run the following script to place the data in the specified path. 
+Run the following script to download the video feature and text feature of the Activitynet dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). 
 
 ```
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
+wget http://8.210.46.84:8787/prvr/data/activitynet.tar
 tar -xvf activitynet.tar
 ```
 
@@ -144,10 +147,11 @@ MODELDIR=activitynet-runs_0-2022_07_11_20_27_02
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
-We also provide the trained checkpoint on Activitynet, it can be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg). Run the following script to evaluate it.
+We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg).
 ```
 ROOTPATH=$HOME/VisualSearch
 DATASET=activitynet
+wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_activitynet.tar
 tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 
 FEATURE=i3d
@@ -169,6 +173,7 @@ The video feature and text feature of the Charades-STA dataset can be downloaded
 ```
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
+wget http://8.210.46.84:8787/prvr/data/charades.tar
 tar -xvf charades.tar
 ```
 
@@ -198,11 +203,11 @@ MODELDIR=charades-runs_0-2022_07_11_20_27_02
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
-
-We also provide the trained checkpoint on Charades-STA, it can be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk). Run the following script to evaluate it.
+We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk).
 ```
 ROOTPATH=$HOME/VisualSearch
 DATASET=charades
+wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_charades.tar
 tar -xvf checkpoint_charades.tar -C $ROOTPATH/$DATASET/results
 
 FEATURE=i3d_rgb_lgi
