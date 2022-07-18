@@ -1,5 +1,6 @@
 # Partially Relevant Video Retrieval
 <img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/pvr_model.png" width="1100px">
+Source code of our ACM MM'2022 paper [Partially Relevant Video Retrieval]().
 
 ## Table of Contents
 
@@ -212,4 +213,4 @@ MODELDIR=checkpoint_charades
 | :---------: | :--: | :--: | :--: | :---: | :---: |
 | Text-to-Video | 1.8 | 7.1 | 11.8 | 47.7  | 68.4 |
 
-
+## Reference
