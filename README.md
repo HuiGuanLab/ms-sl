@@ -234,6 +234,6 @@ year = {2022},
 }
 ```
 ## Acknowledgement
-The codes are modified from [TVRetrieval.](https://github.com/jayleicn/TVRetrieval) and [ReLoCLNet](https://github.com/IsaacChanghau/ReLoCLNet).
+The codes are modified from [TVRetrieval](https://github.com/jayleicn/TVRetrieval) and [ReLoCLNet](https://github.com/IsaacChanghau/ReLoCLNet).
 
 This work was supported by the National Key R&D Program of China (2018YFB1404102), NSFC (62172420,61902347, 61976188, 62002323), the Public Welfare Technology Research Project of Zhejiang Province (LGF21F020010), the Open Projects Program of th eNational Laboratory of Pattern Recognition, the Fundamental Research Funds for the Provincial Universities of Zhejiang, and Public Computing Cloud of RUC.
