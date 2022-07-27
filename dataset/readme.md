@@ -41,14 +41,14 @@ Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,6
         <tr>
             <td>TVR</td>
             <td rowspan="3" align="center"><a href="https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4">https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4</a></td>
-            <td><a href="http://8.210.46.84:8787/prvr/data/tvr.tar">http://8.210.46.84:8787/prvr/data/tvr.tar</a></td>
+            <td>http://8.210.46.84:8787/prvr/data/tvr.tar</td>
         </tr>
         <tr>
             <td>Activitynet</td>
-            <td><a href="http://8.210.46.84:8787/prvr/data/activitynet.tar">http://8.210.46.84:8787/prvr/data/activitynet.tar</a></td>
+            <td>http://8.210.46.84:8787/prvr/data/activitynet.tar</td>
         </tr>
         <tr>
             <td>Charades-STA</td>
-            <td><a href="http://8.210.46.84:8787/prvr/data/charades.tar">http://8.210.46.84:8787/prvr/data/charades.tar</a></td>
+            <td>http://8.210.46.84:8787/prvr/data/charades.tar</td>
         </tr>
  </table>
