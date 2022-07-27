@@ -83,20 +83,21 @@ The model is placed in the directory $ROOTPATH/$DATASET/results/$MODELDIR after 
 DATASET=tvr
 FEATURE=i3d_resnet
 ROOTPATH=$HOME/VisualSearch
-MODELDIR=tvr-runs_0-2022_07_11_20_27_02
+MODELDIR=tvr-runs_0-2022_07_11_20_27_02 
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
 We also provide the trained checkpoint on TVR, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk). 
 ```
-ROOTPATH=$HOME/VisualSearch
 DATASET=tvr
+FEATURE=i3d_resnet
+ROOTPATH=$HOME/VisualSearch
+MODELDIR=checkpoint_tvr
+
 wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_tvr.tar
 tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
-FEATURE=i3d_resnet
-MODELDIR=checkpoint_tvr
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 `$DATASET` is the dataset that the model trained and evaluate on.
@@ -149,13 +150,14 @@ MODELDIR=activitynet-runs_0-2022_07_11_20_27_02
 
 We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg).
 ```
-ROOTPATH=$HOME/VisualSearch
 DATASET=activitynet
+FEATURE=i3d
+ROOTPATH=$HOME/VisualSearch
+MODELDIR=checkpoint_activitynet
+
 wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_activitynet.tar
 tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 
-FEATURE=i3d
-MODELDIR=checkpoint_activitynet
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
@@ -205,13 +207,14 @@ MODELDIR=charades-runs_0-2022_07_11_20_27_02
 ```
 We also provide the trained checkpoint on Charades-STA, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk).
 ```
-ROOTPATH=$HOME/VisualSearch
 DATASET=charades
+FEATURE=i3d_rgb_lgi
+ROOTPATH=$HOME/VisualSearch
+MODELDIR=checkpoint_charades
+
 wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_charades.tar
 tar -xvf checkpoint_charades.tar -C $ROOTPATH/$DATASET/results
 
-FEATURE=i3d_rgb_lgi
-MODELDIR=checkpoint_charades
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
@@ -231,4 +234,6 @@ year = {2022},
 }
 ```
 ## Acknowledgement
-The codes are modified from [TVRetrieval.](https://github.com/jayleicn/TVRetrieval)
+The codes are modified from [TVRetrieval.](https://github.com/jayleicn/TVRetrieval) and [ReLoCLNet](https://github.com/IsaacChanghau/ReLoCLNet).
+
+This work was supported by the National Key R&D Program of China (2018YFB1404102), NSFC (62172420,61902347, 61976188, 62002323), the Public Welfare Technology Research Project of Zhejiang Province (LGF21F020010), the Open Projects Program of th eNational Laboratory of Pattern Recognition, the Fundamental Research Funds for the Provincial Universities of Zhejiang, and Public Computing Cloud of RUC.
