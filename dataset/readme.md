@@ -52,3 +52,10 @@ Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,6
             <td>http://8.210.46.84:8787/prvr/data/charades.tar</td>
         </tr>
  </table>
+ 
+ ## Reference
+[1] Jie Lei, Licheng Yu, Tamara L Berg, and Mohit Bansal. 2020. TVR: A large-scale dataset for video-subtitle moment retrieval. In European Conference on Computer Vision. 447–463.
+[2] Bowen Zhang, Hexiang Hu, Joonseok Lee, Ming Zhao, Sheide Chammas, Vihan Jain,Eugene Ie,and Fei Sha. 2020. A hierarchical multi-modal encoder for moment localization in video corpus. arXiv preprint arXiv:2011.09046 (2020).
+[3] Hao Zhang, Aixin Sun, Wei Jing, Guoshun Nan, Liangli Zhen, Joey Tianyi Zhou, and Rick Siow Mong Goh. 2021. Video corpus moment retrieval with contrastive learning. In Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval. 685–695.
+[4] Ranjay Krishna, Kenji Hata, Frederic Ren, Li Fei-Fei, and Juan Carlos Niebles. 2017. Dense-captioning events in videos. In Proceedings of the IEEE International Conference on Computer Vision. 706–715.
+[5] Jiyang Gao, Chen Sun, Zhenheng Yang, and Ram Nevatia. 2017. Tall: Temporal activity localization via language query. In Proceedings of the IEEE International Conference on Computer Vision. 5267–5275.
