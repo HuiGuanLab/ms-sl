@@ -36,7 +36,7 @@ Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,6
 
 <table>
         <tr align="center">
-          <th style="width: 180px;">Dataset</th><th>Baidu pan</th><th>Aliyun</th>
+          <th style="width: 200px;">Dataset</th><th>Baidu pan</th><th>Aliyun</th>
         </tr>
         <tr>
             <td>TV show Retireval</td>
