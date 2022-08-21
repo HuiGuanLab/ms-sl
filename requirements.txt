@@ -5,4 +5,3 @@ tensorboard==2.6.0
 tqdm==4.62.0
 easydict==1.9
 h5py==2.10.0
-cuda==11.1
