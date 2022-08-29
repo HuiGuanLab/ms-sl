@@ -1,5 +1,5 @@
 # Partially Relevant Video Retrieval
-Source code of our ACM MM'2022 paper [Partially Relevant Video Retrieval](#).
+Source code of our ACM MM'2022 paper [Partially Relevant Video Retrieval](https://arxiv.org/abs/2208.12510).
 
 
 <img src="https://github.com/HuiGuanLab/ms-sl/blob/main/figures/pvr_model.png" width="1100px">
