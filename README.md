@@ -49,7 +49,7 @@ conda deactivate
 ## MS-SL on TVR
 
 ### Required Data
-Run the following script to download the video feature and text feature of the TVR dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [https://github.com/HuiGuanLab/ms-sl/tree/main/dataset](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
+Run the following script to download the video feature and text feature of the TVR dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
 
 ```
 # download the data of TVR
@@ -114,7 +114,7 @@ tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
 ## MS-SL on Activitynet
 ### Required Data
-Run the following script to download the video feature and text feature of the Activitynet dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). 
+Run the following script to download the video feature and text feature of the Activitynet dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
 
 ```
 ROOTPATH=$HOME/VisualSearch
@@ -171,7 +171,7 @@ tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 ## MS-SL on Charades-STA
 
 ### Required Data
-Run the following script to download the video feature and text feature of the Charades-STA dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4).  
+Run the following script to download the video feature and text feature of the Charades-STA dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
 
 ```
 ROOTPATH=$HOME/VisualSearch
