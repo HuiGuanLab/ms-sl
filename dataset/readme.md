@@ -12,7 +12,7 @@ TV show Retrieval (TVR) [1] is a multimodal dataset originally for video corpus 
 17,435 videos with 87,175 moments for training and 2,179 videos
 with 10,895 moments for testing.
 
-|             |Train  | Val&Test  |
+|             |Train  | Test  |
 | :---------: | :--: | :--: |
 | TV show Retrieval | 17,435 videos, 87,175 sentences | 2,179 videos, 10,895 sentences|
 
@@ -20,7 +20,7 @@ with 10,895 moments for testing.
 
 ActivityNet Captions [4] is originally developed for dense video captioning task, and is now a popular dataset for single video moment retrieval. It contains around 20K videos from Youtube, and the average length of videos is the largest among the three datasets we used. On average, each video has around 3.7 moments with corresponding sentence descriptions.We use the popular data partition used in [2, 3].
 
-|             |Train  | Val&Test  |
+|             |Train  | Test  |
 | :---------: | :--: | :--: |
 | Activitynet Captions | 9,043 videos, 33,721 sentences | 4,430 videos, 15,753 sentences|
 
@@ -28,7 +28,7 @@ ActivityNet Captions [4] is originally developed for dense video captioning task
 
 Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,670 videos with 16,128 sentence descriptions. Each video has around 2.4 moments with corresponding sentence descriptions on average. We utilize the official data partition for model training and evaluation.
 
-|             |Train  | Val&Test  |
+|             |Train  | Test  |
 | :---------: | :--: | :--: |
 | Charades-STA | 5,538 videos, 12,408 sentences | 1,334 videos, 3,720 sentences|
 
