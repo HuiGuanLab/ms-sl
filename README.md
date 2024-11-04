@@ -49,14 +49,13 @@ conda deactivate
 ## MS-SL on TVR
 
 ### Required Data
-Run the following script to download the video feature and text feature of the TVR dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
+The data can be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset. Run the following script to place the data in the specified path.
 
 ```
 # download the data of TVR
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
-wget http://8.210.46.84:8787/prvr/data/tvr.tar
-tar -xvf tvr.tar
+unzip tvr.zip -d $ROOTPATH
 ```
 
 ### Training
