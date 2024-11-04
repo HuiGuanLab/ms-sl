@@ -88,14 +88,13 @@ MODELDIR=tvr-runs_0-2022_07_11_20_27_02
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
-We also provide the trained checkpoint on TVR, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk). 
+We also provide the trained checkpoint on TVR, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1d70cecBvwVqYwmvobJpbGw?pwd=zxzk) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing). 
 ```
 DATASET=tvr
 FEATURE=i3d_resnet
 ROOTPATH=$HOME/VisualSearch
 MODELDIR=checkpoint_tvr
 
-wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_tvr.tar
 tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
@@ -113,13 +112,12 @@ tar -xvf checkpoint_tvr.tar -C $ROOTPATH/$DATASET/results
 
 ## MS-SL on Activitynet
 ### Required Data
-Run the following script to download the video feature and text feature of the Activitynet dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
+The data can be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset. Run the following script to place the data in the specified path.
 
 ```
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
-wget http://8.210.46.84:8787/prvr/data/activitynet.tar
-tar -xvf activitynet.tar
+unzip activitynet.zip -d $ROOTPATH
 ```
 
 ### Training
@@ -148,14 +146,13 @@ MODELDIR=activitynet-runs_0-2022_07_11_20_27_02
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
 
-We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg).
+We also provide the trained checkpoint on Activitynet, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/10zMvaSGRyJWxGUgSPm2ySg?pwd=omgg) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing).
 ```
 DATASET=activitynet
 FEATURE=i3d
 ROOTPATH=$HOME/VisualSearch
 MODELDIR=checkpoint_activitynet
 
-wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_activitynet.tar
 tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
@@ -170,13 +167,12 @@ tar -xvf checkpoint_activitynet.tar -C $ROOTPATH/$DATASET/results
 ## MS-SL on Charades-STA
 
 ### Required Data
-Run the following script to download the video feature and text feature of the Charades-STA dataset and place them in the specified path. The data can also be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset.
+The data can be downloaded from [Baidu pan](https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing). Please refer to [here](https://github.com/HuiGuanLab/ms-sl/tree/main/dataset) for more description of the dataset. Run the following script to place the data in the specified path.
 
 ```
 ROOTPATH=$HOME/VisualSearch
 mkdir -p $ROOTPATH && cd $ROOTPATH
-wget http://8.210.46.84:8787/prvr/data/charades.tar
-tar -xvf charades.tar
+unzip charades.zip -d $ROOTPATH
 ```
 
 ### Training
@@ -205,14 +201,13 @@ MODELDIR=charades-runs_0-2022_07_11_20_27_02
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
 ```
-We also provide the trained checkpoint on Charades-STA, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk).
+We also provide the trained checkpoint on Charades-STA, run the following script to evaluate it. The model can also be downloaded from [Here](https://pan.baidu.com/s/1IuUI1D04gSSmfiHQwedbgg?pwd=w6mk) or [Google drive](https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing).
 ```
 DATASET=charades
 FEATURE=i3d_rgb_lgi
 ROOTPATH=$HOME/VisualSearch
 MODELDIR=checkpoint_charades
 
-wget http://8.210.46.84:8787/prvr/checkpoints/checkpoint_charades.tar
 tar -xvf checkpoint_charades.tar -C $ROOTPATH/$DATASET/results
 
 ./do_test.sh $DATASET $FEATURE $ROOTPATH $MODELDIR
