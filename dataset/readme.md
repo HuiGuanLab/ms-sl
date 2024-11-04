@@ -39,9 +39,8 @@ Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,6
           <th>Baidu pan</th><th>Google Drive</th>
         </tr>
         <tr>
-            
             <th align="center"><a href="https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4">https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4</a></th>
-            <th align="center"><a href="https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing"></a>https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing</th>
+            <th align="center"><a href="https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing">https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing</a></th>
         </tr>
  </table>
  
