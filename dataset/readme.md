@@ -41,7 +41,7 @@ Charades-STA [5] is a dataset for single video moment retrieval. It contains 6,6
         <tr>
             <td>TVR</td>
             <td rowspan="3" align="center"><a href="https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4">https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4</a></td>
-            <td rowspan="3" align="center"><a href="https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4">https://pan.baidu.com/s/1UNu67hXCbA6ZRnFVPVyJOA?pwd=8bh4</a></td>
+            <td rowspan="3" align="center"><a href="https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing"></a>https://drive.google.com/drive/folders/11dRUeXmsWU25VMVmeuHc9nffzmZhPJEj?usp=sharing</td>
         </tr>
         <tr>
             <td>Activitynet</td>
